@@ -1,7 +1,9 @@
-export const FeedbackOptions = ({ option, onLeaveFeedback }) => {
-    return (
-            <button type="button" onClick={onLeaveFeedback}>
+export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
+  return (options.map((option, index) => (
+    <button type="button" onClick={() => onLeaveFeedback( option )} key={index} >
             {option}
           </button>
+  ))
+            
     );
   }
