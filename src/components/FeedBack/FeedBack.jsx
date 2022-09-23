@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { Statistics } from './Statistics';
+import { Statistics } from '../FeedbackStatistics/Statistics';
 import { FeedbackOptions } from './FeedbackOptions';
 import { Section } from 'components/Section/Section';
 import { Notification } from 'components/Notification/Notification';
+// import PropTypes from 'prop-types';
+
 export default class FeedBack extends Component {
   state = {
     good: 0,
@@ -24,7 +26,7 @@ export default class FeedBack extends Component {
     if (!this.countTotalFeedback()) {
       return 0;
     }
-    return ((100 / this.countTotalFeedback()) * good).toFixed(0);
+    return Number(((100 / this.countTotalFeedback()) * good).toFixed(0));
   }
   render() {
     const { good, neutral, bad } = this.state;
@@ -50,3 +52,7 @@ export default class FeedBack extends Component {
     );
   }
 }
+
+// FeedBack.propTypes = {
+//  ???
+// };
