@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Statistics } from '../FeedbackStatistics/Statistics';
-import { FeedbackOptions } from './FeedbackOptions';
+import { FeedbackOptions } from '../FeedbackOptions/FeedbackOptions';
 import { Section } from 'components/Section/Section';
 import { Notification } from 'components/Notification/Notification';
 // import PropTypes from 'prop-types';
@@ -32,22 +32,26 @@ export default class FeedBack extends Component {
     const { good, neutral, bad } = this.state;
     return (
       <>
-        <Section title="Please leave feedback" >
-           <FeedbackOptions
-            options={['good', 'neutral', 'bad' ]}
+        <Section title="Please leave feedback">
+          <FeedbackOptions
+            options={['good', 'neutral', 'bad']}
             onLeaveFeedback={this.leaveFeedback}
           />
-          </Section>
-          <Section title="Statistics" > {
-            (good || bad || neutral) ? (<Statistics
-            good={good}
-            neutral={neutral}
-            bad={bad}
-            total={this.countTotalFeedback()}
-            positivePercentage={this.countPositiveFeedbackPercentage()}
-          />) : (<Notification message='There is no feedback' />)
-          }</Section>
-         
+        </Section>
+        <Section title="Statistics">
+          {' '}
+          {good || bad || neutral ? (
+            <Statistics
+              good={good}
+              neutral={neutral}
+              bad={bad}
+              total={this.countTotalFeedback()}
+              positivePercentage={this.countPositiveFeedbackPercentage()}
+            />
+          ) : (
+            <Notification message="There is no feedback" />
+          )}
+        </Section>
       </>
     );
   }
